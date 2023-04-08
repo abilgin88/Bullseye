@@ -12,8 +12,10 @@ struct ContentView: View {
   @State private var alertIsVisible: Bool = false
   
   //State variable to keep track of the slider's value.
-  @State private var sliderValue: Double = 20.0
-
+  @State private var sliderValue: Double = 50.0
+  
+  // creates a new instance of that template game ContentView
+  @State private var game: Game = Game()
   
   var body: some View {
     VStack {
@@ -24,8 +26,8 @@ struct ContentView: View {
         .lineSpacing(4.0)
         .font(.footnote)
         .kerning(2.0)
-      //Add a target value
-      Text("89")
+      // Instead of showing the hard-coded 89, display the target from the game property.
+      Text(String(game.target))
         .kerning(-1.0)
         .font(.largeTitle)
         .fontWeight(.black)
@@ -58,8 +60,12 @@ struct ContentView: View {
           // make temporary variables convert value and rounded it
           let roundedValue: Int = Int(sliderValue.rounded())
           
-          // modify massage with rounded slider value
-          Text("The slider's value is \(roundedValue)")
+          // show users what their score is after they’ve tapped the “Hit Me” button
+          Text("""
+            The slider's value is \(roundedValue)
+            You scored \(game.point(sliderValue: roundedValue)) points this round.
+          """)
+          
         }
       )
     }
