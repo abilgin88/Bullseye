@@ -15,19 +15,9 @@ struct Game {
   //  Create a method for calculating points
   func point(sliderValue: Int) -> Int {
     // create a local variable inside this method called the difference
-    var difference: Int
-    
-    // if-else based on our plain-english algorithm
-    if sliderValue > target {
-      difference = sliderValue - target
-    } else if target > sliderValue {
-      difference = target - sliderValue
-    } else {
-      difference = 0
-    }
-    
+    let difference: Int = abs(target - sliderValue)
     // create a local variable inside this method called the awardedPoints
-    var awardedPoints: Int = 100 - difference
+    let awardedPoints: Int = 100 - difference
     return awardedPoints
   }
 }

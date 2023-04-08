@@ -26,15 +26,15 @@ final class BullsEyeTests: XCTestCase {
   
   // add one where the slider value is greater than the target value.
   func testScorePositive() {
-    var guess = game.target + 5
-    var score = game.point(sliderValue: guess)
+    let guess = game.target + 5
+    let score = game.point(sliderValue: guess)
     XCTAssertEqual(score, 95)
   }
   
   // add a second test where the slider value is less than the target value
   func testScoreNegative() {
-    var guess = game.target - 5
-    var score = game.point(sliderValue: guess)
+    let guess = game.target - 5
+    let score = game.point(sliderValue: guess)
     XCTAssertEqual(score, 95)
   }
   
