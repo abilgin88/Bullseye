@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
   // add a new property that stores whether or not alert is visible.
-  @State private var alertIsVisible: Bool = false
+  @State private var alertIsVisible = false
   
   //State variable to keep track of the slider's value.
-  @State private var sliderValue: Double = 50.0
+  @State private var sliderValue = 50.0
   
   // creates a new instance of that template game ContentView
-  @State private var game: Game = Game()
+  @State private var game = Game()
   
   var body: some View {
     VStack {
@@ -58,7 +58,7 @@ struct ContentView: View {
         },
         message: {
           // make temporary variables convert value and rounded it
-          let roundedValue: Int = Int(sliderValue.rounded())
+          let roundedValue = Int(sliderValue.rounded())
           
           // show users what their score is after they’ve tapped the “Hit Me” button
           Text("""
