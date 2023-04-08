@@ -11,6 +11,10 @@ struct ContentView: View {
   // add a new property that stores whether or not alert is visible.
   @State private var alertIsVisible: Bool = false
   
+  //State variable to keep track of the slider's value.
+  @State private var sliderValue: Double = 20.0
+
+  
   var body: some View {
     VStack {
       // Add an instructions label
@@ -30,7 +34,7 @@ struct ContentView: View {
         Text("1")
           .bold()
         // Add a slider and make it go between the values 1 and 100
-        Slider(value: .constant(50), in: 1.0 ... 100.0)
+        Slider(value: $sliderValue, in: 1.0 ... 100.0) // binding the slidervalue
         // Add slider right side
         Text("100")
           .bold()
@@ -51,7 +55,11 @@ struct ContentView: View {
           
         },
         message: {
-          Text("This is my first alert")
+          // make temporary variables convert value and rounded it
+          let roundedValue: Int = Int(sliderValue.rounded())
+          
+          // modify massage with rounded slider value
+          Text("The slider's value is \(roundedValue)")
         }
       )
     }
