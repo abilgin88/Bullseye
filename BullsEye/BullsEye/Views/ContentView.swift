@@ -30,20 +30,24 @@ struct ContentView: View {
           .font(.footnote)
           .kerning(2.0)
           .padding(.horizontal, 30)
+          .foregroundColor(Color("TextColor"))
         // Instead of showing the hard-coded 89, display the target from the game property.
         Text(String(game.target))
           .kerning(-1.0)
           .font(.largeTitle)
           .fontWeight(.black)
+          .foregroundColor(Color("TextColor"))
         HStack {
           // Add slider right side
           Text("1")
             .bold()
+            .foregroundColor(Color("TextColor"))
           // Add a slider and make it go between the values 1 and 100
           Slider(value: $sliderValue, in: 1.0 ... 100.0) // binding the slidervalue
           // Add slider right side
           Text("100")
             .bold()
+            .foregroundColor(Color("TextColor"))
         }
         .padding()
         // Add a button for hit me
@@ -95,5 +99,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+    ContentView()
+      .preferredColorScheme(.dark)
+      .previewDevice("iPhone 14 Pro Max")
   }
 }
