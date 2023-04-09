@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8690227C-8EE8-4D73-B750-B1B76B7DF7EB"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09529AAF-681A-4F17-845B-62E66934906F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BullsEyeTests/BullsEyeTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "BullsEyeTests"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "09529AAF-681A-4F17-845B-62E66934906F - dd83f8a0d9d37ad1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BullsEyeTests.BullsEyeTests.game.getter : Swift.Optional&lt;BullsEye.Game&gt;"
+                  moduleName = "BullsEyeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abil/Documents/kodeco/Bullseye/BullsEye/BullsEyeTests/BullsEyeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "09529AAF-681A-4F17-845B-62E66934906F - 5c44d354a5fb3ccd"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BullsEyeTests.BullsEyeTests.game.setter : Swift.Optional&lt;BullsEye.Game&gt;"
+                  moduleName = "BullsEyeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abil/Documents/kodeco/Bullseye/BullsEye/BullsEyeTests/BullsEyeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "09529AAF-681A-4F17-845B-62E66934906F - b7562e54d6319a5c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BullsEyeTests.BullsEyeTests.game.modify : Swift.Optional&lt;BullsEye.Game&gt;"
+                  moduleName = "BullsEyeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abil/Documents/kodeco/Bullseye/BullsEye/BullsEyeTests/BullsEyeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "09529AAF-681A-4F17-845B-62E66934906F - 73a6c21473ac4fe6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BullsEyeTests.BullsEyeTests.game.modify : Swift.Optional&lt;BullsEye.Game&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "BullsEyeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abil/Documents/kodeco/Bullseye/BullsEye/BullsEyeTests/BullsEyeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "09529AAF-681A-4F17-845B-62E66934906F - 88ecce2d3c6d3784"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BullsEyeTests.BullsEyeTests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; BullsEyeTests.BullsEyeTests"
+                  moduleName = "BullsEyeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abil/Documents/kodeco/Bullseye/BullsEye/BullsEyeTests/BullsEyeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "09529AAF-681A-4F17-845B-62E66934906F - a1f60313342f9f9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BullsEyeTests.BullsEyeTests.init(selector: ObjectiveC.Selector) -&gt; BullsEyeTests.BullsEyeTests"
+                  moduleName = "BullsEyeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abil/Documents/kodeco/Bullseye/BullsEye/BullsEyeTests/BullsEyeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "09529AAF-681A-4F17-845B-62E66934906F - 317cc03709d15368"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BullsEyeTests.BullsEyeTests.init() -&gt; BullsEyeTests.BullsEyeTests"
+                  moduleName = "BullsEyeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abil/Documents/kodeco/Bullseye/BullsEye/BullsEyeTests/BullsEyeTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

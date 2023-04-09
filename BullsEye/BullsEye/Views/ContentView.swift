@@ -20,12 +20,13 @@ struct ContentView: View {
   var body: some View {
     VStack {
       // Add an instructions label
-      Text("🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+      Text("🎯🎯🎯\nPut the Bullseye as close as you can to".uppercased())
         .bold()
         .multilineTextAlignment(.center)
         .lineSpacing(4.0)
         .font(.footnote)
         .kerning(2.0)
+        .padding(.horizontal, 30)
       // Instead of showing the hard-coded 89, display the target from the game property.
       Text(String(game.target))
         .kerning(-1.0)
@@ -41,11 +42,21 @@ struct ContentView: View {
         Text("100")
           .bold()
       }
+      .padding()
       // Add a button for hit me
-      Button("Hit Me") {
+      Button("Hit Me".uppercased()) {
         // gets run when the user taps the Hit Me button.
         alertIsVisible = true
       }
+      //Styling the button
+      .padding(20.0)
+      .background(
+        Color.blue
+      )
+      .foregroundColor(.white)
+      .cornerRadius(21.0)
+      .bold()
+      .font(.title3)
       //call alert method on the resulting button
       .alert(
         "Hello there",
