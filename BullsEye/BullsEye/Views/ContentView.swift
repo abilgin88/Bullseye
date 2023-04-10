@@ -10,10 +10,8 @@ import SwiftUI
 struct ContentView: View {
   // add a new property that stores whether or not alert is visible.
   @State private var alertIsVisible = false
-  
   //State variable to keep track of the slider's value.
   @State private var sliderValue = 50.0
-  
   // creates a new instance of that template game ContentView
   @State private var game = Game()
   
@@ -21,78 +19,101 @@ struct ContentView: View {
     ZStack {
       Color("BackgroundColor")
         .ignoresSafeArea()
+      
       VStack {
-        // Add an instructions label
-        Text("🎯🎯🎯\nPut the Bullseye as close as you can to".uppercased())
-          .bold()
-          .multilineTextAlignment(.center)
-          .lineSpacing(4.0)
-          .font(.footnote)
-          .kerning(2.0)
-          .padding(.horizontal, 30)
-          .foregroundColor(Color("TextColor"))
-        // Instead of showing the hard-coded 89, display the target from the game property.
-        Text(String(game.target))
-          .kerning(-1.0)
-          .font(.largeTitle)
-          .fontWeight(.black)
-          .foregroundColor(Color("TextColor"))
-        HStack {
-          // Add slider right side
-          Text("1")
-            .bold()
-            .foregroundColor(Color("TextColor"))
-          // Add a slider and make it go between the values 1 and 100
-          Slider(value: $sliderValue, in: 1.0 ... 100.0) // binding the slidervalue
-          // Add slider right side
-          Text("100")
-            .bold()
-            .foregroundColor(Color("TextColor"))
-        }
-        .padding()
-        // Add a button for hit me
-        Button("Hit Me".uppercased()) {
-          // gets run when the user taps the Hit Me button.
-          alertIsVisible = true
-        }
-        //Styling the button
-        .padding(20.0)
-        .background(
-          ZStack {
-            Color("ButtonColor")
-            LinearGradient(
-              gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]),
-              startPoint: .top, endPoint: .bottom)
-          }
-        )
-        .foregroundColor(.white)
-        .cornerRadius(21.0)
-        .bold()
-        .font(.title3)
-        //call alert method on the resulting button
-        .alert(
-          "Hello there",
-          isPresented: $alertIsVisible,
-          actions: {
-            Button("Awesome") {
-              print("Alert closed")
-            }
-            
-          },
-          message: {
-            // make temporary variables convert value and rounded it
-            let roundedValue = Int(sliderValue.rounded())
-            
-            // show users what their score is after they’ve tapped the “Hit Me” button
-            Text("""
-              The slider's value is \(roundedValue)
-              You scored \(game.point(sliderValue: roundedValue)) points this round.
-            """)
-            
-          }
-        )
+        // call instruction-view and pass game data in it. (Now we have single line here:))
+        InstructionsView(game: $game)
+        // call Slider-View
+        Sliderview(sliderValue: $sliderValue)
+        // HitMeButton view
+        HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
       }
     }
+  }
+}
+
+// Combine Instruction and Big Number views in a single View
+struct InstructionsView: View {
+  // passing game data from content-view
+  @Binding var game: Game
+  
+  var body: some View {
+    VStack {
+      // call instruction text view from textView file
+      InstructionText(text: "🎯🎯🎯\nPut the Bullseye as close as you can to")
+        .padding(.horizontal, 30)
+      
+      // call big number text view from textView file
+      BigNumberText(text: String(game.target))
+    }
+  }
+}
+
+// Create a new view for slider
+struct Sliderview: View {
+  @Binding var sliderValue: Double
+  
+  var body: some View {
+    HStack {
+      // call slider-label-text from textView file
+      SliderLabelText(text: "1")
+      // Add a slider and make it go between the values 1 and 100
+      Slider(value: $sliderValue, in: 1.0 ... 100.0) // binding the slider-value
+      // call slider-label-text from textView file
+      SliderLabelText(text: "100")
+    }
+    .padding()
+  }
+}
+
+// Create a new view for Hit-Me button
+
+struct HitMeButton: View {
+  // Pass the variables
+  @Binding var alertIsVisible: Bool
+  @Binding var sliderValue: Double
+  @Binding var game: Game
+  
+  var body: some View {
+    // Add a button for hit me
+    Button("Hit Me".uppercased()) {
+      // gets run when the user taps the Hit Me button.
+      alertIsVisible = true
+    }
+    //Styling the button
+    .padding(20.0)
+    .background(
+      ZStack {
+        Color("ButtonColor")
+        LinearGradient(
+          gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]),
+          startPoint: .top, endPoint: .bottom)
+      }
+    )
+    .foregroundColor(.white)
+    .cornerRadius(21.0)
+    .bold()
+    .font(.title3)
+    //call alert method on the resulting button
+    .alert(
+      "Hello there",
+      isPresented: $alertIsVisible,
+      actions: {
+        Button("Awesome") {
+          print("Alert closed")
+        }
+      },
+      message: {
+        // make temporary variables convert value and rounded it
+        let roundedValue = Int(sliderValue.rounded())
+        
+        // show users what their score is after they’ve tapped the “Hit Me” button
+        Text("""
+          The slider's value is \(roundedValue)
+          You scored \(game.point(sliderValue: roundedValue)) points this round.
+        """)
+      }
+    )
   }
 }
 
