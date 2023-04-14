@@ -48,6 +48,18 @@ struct SliderLabelText: View {
   }
 }
 
+// Create a label text view to style Score and Round Text
+struct LabelText: View {
+  var text: String
+  
+  var body: some View {
+    Text(text.uppercased())
+      .kerning(1.5)
+      .font(.caption)
+      .bold()
+      .foregroundColor(Color("TextColor"))
+  }
+}
 
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
@@ -56,6 +68,8 @@ struct TextViews_Previews: PreviewProvider {
       InstructionText(text: "Instructions")
       BigNumberText(text: "999")
       SliderLabelText(text: "99")
+      LabelText(text: "Score")
+     
     }
     
   }

@@ -49,6 +49,26 @@ struct RoundedImageViewFilled: View {
   }
 }
 
+
+// create a struct for stroke view
+struct RoundRectTextView: View {
+  var text: String
+  
+  var body: some View {
+      Text(text)
+        .kerning(0.2)
+        .bold()
+        .font(.title3)
+        .frame(width: 68, height: 56)
+        .foregroundColor(Color("TextColor"))
+        .overlay(
+          RoundedRectangle(cornerRadius: 21)
+            .stroke(lineWidth: 2)
+            .foregroundColor(Color("ButtonStrokeColor"))
+        )
+  }
+}
+
 // create a preview to preview reset and leaderboard symbol
 struct PreviewView: View {
   var body: some View {
@@ -56,6 +76,7 @@ struct PreviewView: View {
     VStack(spacing: 10) {
       RoundedImageViewFilled(systemName: "arrow.counterclockwise")
       RoundedImageViewStroked(systemName: "list.dash")
+      RoundRectTextView(text: "100")
     }
   }
 }

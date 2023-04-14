@@ -17,9 +17,8 @@ struct ContentView: View {
   
   var body: some View {
     ZStack {
-      Color("BackgroundColor")
-        .ignoresSafeArea()
-      
+      // add background view (remove here color and  safe area, because background view include them)
+      BackgroundView(game: $game)
       VStack {
         // call instruction-view and pass game data in it. (Now we have single line here:))
         InstructionsView(game: $game)
@@ -57,10 +56,14 @@ struct Sliderview: View {
     HStack {
       // call slider-label-text from textView file
       SliderLabelText(text: "1")
+      // centered slider icon
+        .frame(width: 35)
       // Add a slider and make it go between the values 1 and 100
       Slider(value: $sliderValue, in: 1.0 ... 100.0) // binding the slider-value
       // call slider-label-text from textView file
       SliderLabelText(text: "100")
+      // centered slider icon
+        .frame(width: 35)
     }
     .padding()
   }
