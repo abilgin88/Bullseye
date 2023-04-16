@@ -19,7 +19,10 @@ struct Game {
   
     // create a method to start new round
   mutating func startNewRound(points: Int) {
+    // after start the score and round will update
     score += points
     round += 1
+    // for create a new random number
+    target = Int.random(in: 1...100)
   }
 }

@@ -38,7 +38,7 @@ final class BullsEyeTests: XCTestCase {
     XCTAssertEqual(score, 95)
   }
   
-  // new round test TDD
+  // add test for the score and round
 
   func testNewRound() {
     game.startNewRound(points: 100)
