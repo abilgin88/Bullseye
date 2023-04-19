@@ -38,13 +38,26 @@ final class BullsEyeTests: XCTestCase {
     XCTAssertEqual(score, 95)
   }
   
-  // add test for the score and round
-
-  func testNewRound() {
-    game.startNewRound(points: 100)
-    XCTAssertEqual(game.score, 100)
-    XCTAssertEqual(game.round, 2)
+  // for exact 100
+  func testScoreExact() {
+    let guess = game.target
+    let score = game.point(sliderValue: guess)
+    XCTAssertEqual(score, 200)
   }
   
-  
+  // for close
+  func testScoreClose() {
+    let guess = game.target + 2
+    let score = game.point(sliderValue: guess)
+    XCTAssertEqual(score, 98 + 50)
+    
+    
+    // add test for the score and round
+    
+    func testNewRound() {
+      game.startNewRound(points: 100)
+      XCTAssertEqual(game.score, 100)
+      XCTAssertEqual(game.round, 2)
+    }
+  }
 }

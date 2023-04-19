@@ -14,10 +14,20 @@ struct Game {
   
   //  Create a method for calculating points
   func point(sliderValue: Int) -> Int {
-     100 - abs(target - sliderValue)
+    let difference = abs(target - sliderValue)
+    let bonus: Int
+    
+    if difference == 0 {
+      bonus  = 100
+    } else if difference <= 2 {
+      bonus = 50
+    } else {
+      bonus = 0
+    }
+    return 100 - difference + bonus
   }
   
-    // create a method to start new round
+  // create a method to start new round
   mutating func startNewRound(points: Int) {
     // after start the score and round will update
     score += points
