@@ -31,6 +31,9 @@ struct ContentView: View {
   }
 }
 
+
+
+
 // Combine Instruction and Big Number views in a single View
 struct InstructionsView: View {
   // passing game data from content-view

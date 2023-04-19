@@ -35,4 +35,11 @@ struct Game {
     // for create a new random number
     target = Int.random(in: 1...100)
   }
+  
+  // create a method to reset the app
+  mutating func restart() {
+    score = 0
+    round = 1
+    target = Int.random(in: 1...100)
+  }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 // create a background view for top-view, bottom-view, background color and ignore safe area
 struct BackgroundView: View {
   @Binding var game: Game
-
+  
   var body: some View {
     VStack {
       TopView(game: $game)
@@ -30,7 +30,12 @@ struct TopView: View {
   @Binding var game: Game
   var body: some View {
     HStack {
-      RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+      // Add action to start over the button and call the restart method when tapping it
+      Button {
+        game.restart()
+      } label: {
+        RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+      }
       Spacer()
       RoundedImageViewFilled(systemName: "list.dash")
     }
