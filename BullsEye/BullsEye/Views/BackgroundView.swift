@@ -19,8 +19,7 @@ struct BackgroundView: View {
     }
     .padding()
     .background(
-      Color("BackgroundColor")
-        .ignoresSafeArea()
+      RingView() // call the ring view
     )
   }
 }
@@ -68,6 +67,27 @@ struct BottomView: View {
   }
 }
 
+// Create a ring view to add circle to background
+struct RingView: View {
+  var body: some View {
+    ZStack {
+      Color("BackgroundColor")
+        .ignoresSafeArea()
+      ForEach(1..<6) { ring in
+        let size = CGFloat(ring * 100)
+        Circle()
+          .stroke(lineWidth: 20)
+          .fill(
+            RadialGradient(
+              gradient: Gradient(colors: [Color("RingsColor").opacity(0.3 * 0.8), Color("RingsColor").opacity(0)]),
+              center: .center,
+              startRadius: 100, endRadius: 300))
+          .frame(width: size, height: size)
+      }
+     
+    }
+  }
+}
 
 struct BackgroundView_Previews: PreviewProvider {
   static var previews: some View {
