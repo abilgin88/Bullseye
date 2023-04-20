@@ -69,17 +69,21 @@ struct BottomView: View {
 
 // Create a ring view to add circle to background
 struct RingView: View {
+  //create an environment variable
+  @Environment (\.colorScheme) var colorScheme
   var body: some View {
     ZStack {
       Color("BackgroundColor")
         .ignoresSafeArea()
       ForEach(1..<6) { ring in
         let size = CGFloat(ring * 100)
+        // create a conditional for dark and light mode
+        let opacity = colorScheme == ColorScheme.dark ? 0.1 : 0.3
         Circle()
           .stroke(lineWidth: 20)
           .fill(
             RadialGradient(
-              gradient: Gradient(colors: [Color("RingsColor").opacity(0.3 * 0.8), Color("RingsColor").opacity(0)]),
+              gradient: Gradient(colors: [Color("RingsColor").opacity(opacity * 0.8), Color("RingsColor").opacity(0)]),
               center: .center,
               startRadius: 100, endRadius: 300))
           .frame(width: size, height: size)
