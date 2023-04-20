@@ -61,6 +61,38 @@ struct LabelText: View {
   }
 }
 
+// Create a Body Text View
+struct BodyText: View {
+  var text: String
+  
+  var body: some View {
+    Text(text)
+      .font(.subheadline)
+      .fontWeight(.semibold)
+      .multilineTextAlignment(.center)
+      .lineSpacing(12)
+      //.foregroundColor(Color("TextColor"))
+    
+  }
+}
+
+// Create a Button Text View for alert button
+struct ButtonText: View {
+  var text: String
+  
+  var body: some View {
+    Text(text)
+      .bold()
+      .padding()
+      .frame(maxWidth: .infinity)
+      .background(
+        Color.accentColor
+      )
+      .foregroundColor(.white)
+      .cornerRadius(12)
+  }
+}
+
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
     // Embed both instruction and big number preview
@@ -69,8 +101,9 @@ struct TextViews_Previews: PreviewProvider {
       BigNumberText(text: "999")
       SliderLabelText(text: "99")
       LabelText(text: "Score")
-     
+      BodyText(text: "You scored 200 Points\n 🎉🎉🎉")
+      ButtonText(text: "Start New Round")
     }
-    
+    .padding()
   }
 }
