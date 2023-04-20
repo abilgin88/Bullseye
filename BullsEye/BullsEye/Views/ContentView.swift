@@ -27,15 +27,22 @@ struct ContentView: View {
         if alertIsVisible {
           // call the pointView and pass binding values
           PointViews(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+          // transition for scale in and out
+            .transition(.scale)
         } else {
           // HitMeButton view
           HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+          // transition for scale in and out
+            .transition(.scale)
         }
       }
       // if statement for hide slider when pointsView is visible
       if !alertIsVisible {
         // call Slider-View and move the bottom of content view to center it
         Sliderview(sliderValue: $sliderValue)
+        // transition for scale in and out
+          .zIndex(1) //it doesn't transition. So manually we give the slider view a z-index of one to fix
+          .transition(.scale)
       }
     }
   }
@@ -90,8 +97,11 @@ struct HitMeButton: View {
   var body: some View {
     // Add a button for hit me
     Button("Hit Me".uppercased()) {
-      // gets run when the user taps the Hit Me button.
-      alertIsVisible = true
+      // to animate: 
+      withAnimation{
+        // gets run when the user taps the Hit Me button.
+        alertIsVisible = true
+      }
     }
     //Styling the button
     .padding(20.0)
