@@ -22,11 +22,12 @@ struct ContentView: View {
       VStack {
         // call instruction-view and pass game data in it. (Now we have single line here:))
         InstructionsView(game: $game)
-        // call Slider-View
-        Sliderview(sliderValue: $sliderValue)
+          .padding(.bottom, 100)
         // HitMeButton view
         HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
       }
+      // call Slider-View and move the bottom of content view to center it
+      Sliderview(sliderValue: $sliderValue)
     }
   }
 }
