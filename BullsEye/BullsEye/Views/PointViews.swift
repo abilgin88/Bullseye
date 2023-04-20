@@ -8,17 +8,29 @@
 import SwiftUI
 
 struct PointViews: View {
+  // Passing the variables
+  @Binding var alertIsVisible: Bool
+  @Binding var sliderValue: Double
+  @Binding var game: Game
+  
   var body: some View {
+    // define actual values to pass in to the alert message
+    let roundedValues = Int(sliderValue.rounded())
+    let points = game.point(sliderValue: roundedValues)
+    
     VStack(spacing: 10) {
       InstructionText(text: "The Slider's Value is")
-      BigNumberText(text: "50")
-      BodyText(text: "You scored 200 Points\n 🎉🎉🎉")
+      BigNumberText(text: String(roundedValues))
+      BodyText(text: "You scored \(points) Points\n 🎉🎉🎉")
       Button {
-        // start new round
+        // call the method to dismiss and save the points and raound
+        alertIsVisible = false
+        game.startNewRound(points: points)
       } label: {
         ButtonText(text: "Start New Round")
       }
     }
+    // modifying the custom popup
     .padding()
     .frame(maxWidth: 300)
     .background(Color("BackgroundColor"))
@@ -28,9 +40,15 @@ struct PointViews: View {
 }
 
 struct PointViews_Previews: PreviewProvider {
+  // temporary variable to show on previews
+  static private var alertIsVisible = Binding.constant(false)
+  static private var sliderValue = Binding.constant(50.0)
+  static private var game = Binding.constant(Game())
+
   static var previews: some View {
-    PointViews()
-    PointViews()
+    // pass the constant temporary values to preview
+    PointViews(alertIsVisible: alertIsVisible, sliderValue: sliderValue, game: game)
+    PointViews(alertIsVisible: alertIsVisible, sliderValue: sliderValue, game: game)
       .previewInterfaceOrientation(.landscapeRight)
       .preferredColorScheme(.dark)
   }

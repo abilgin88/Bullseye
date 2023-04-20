@@ -22,18 +22,24 @@ struct ContentView: View {
       VStack {
         // call instruction-view and pass game data in it. (Now we have single line here:))
         InstructionsView(game: $game)
-          .padding(.bottom, 100)
-        // HitMeButton view
-        HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+          .padding(.bottom, alertIsVisible ? 0 : 100) // base on alertIsVisible set padding for bottom
+        // using if state to show pointView or Hitme button base on alertIsVisible state
+        if alertIsVisible {
+          // call the pointView and pass binding values
+          PointViews(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+        } else {
+          // HitMeButton view
+          HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+        }
       }
-      // call Slider-View and move the bottom of content view to center it
-      Sliderview(sliderValue: $sliderValue)
+      // if statement for hide slider when pointsView is visible
+      if !alertIsVisible {
+        // call Slider-View and move the bottom of content view to center it
+        Sliderview(sliderValue: $sliderValue)
+      }
     }
   }
 }
-
-
-
 
 // Combine Instruction and Big Number views in a single View
 struct InstructionsView: View {
@@ -106,27 +112,6 @@ struct HitMeButton: View {
     .cornerRadius(21.0)
     .bold()
     .font(.title3)
-    //call alert method on the resulting button
-    .alert(
-      "Hello there",
-      isPresented: $alertIsVisible,
-      actions: {
-        Button("Awesome") {
-          // call the startNewRound (First we put the "Hit Me" Button and we debugger and move here to fix problem 
-          game.startNewRound(points: game.point(sliderValue: Int(sliderValue)))
-        }
-      },
-      message: {
-        // make temporary variables convert value and rounded it
-        let roundedValue = Int(sliderValue.rounded())
-        
-        // show users what their score is after they’ve tapped the “Hit Me” button
-        Text("""
-          The slider's value is \(roundedValue)
-          You scored \(game.point(sliderValue: roundedValue)) points this round.
-        """)
-      }
-    )
   }
 }
 
@@ -134,7 +119,8 @@ struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
     ContentView()
+      .previewInterfaceOrientation(.landscapeRight)
       .preferredColorScheme(.dark)
-      .previewDevice("iPhone 14 Pro Max")
+      
   }
 }
