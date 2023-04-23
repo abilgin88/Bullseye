@@ -71,7 +71,7 @@ struct BodyText: View {
       .fontWeight(.semibold)
       .multilineTextAlignment(.center)
       .lineSpacing(12)
-      //.foregroundColor(Color("TextColor"))
+    //.foregroundColor(Color("TextColor"))
     
   }
 }
@@ -93,6 +93,36 @@ struct ButtonText: View {
   }
 }
 
+
+// Creating a score text view and modify
+struct ScoreText: View {
+  var score: Int
+  
+  var body: some View {
+    Text(String(score))
+      .bold()
+      .kerning(-0.2)
+      .foregroundColor(Color("TextColor"))
+      .font(.title3)
+  }
+}
+
+// create a date text view, modify and set the date
+struct DateText: View {
+  var date: Date
+  
+  var body: some View {
+    // defining Text style property for defining the current date
+    Text(date, style: .time)
+      .bold()
+      .kerning(-0.2)
+      .foregroundColor(Color("TextColor"))
+      .font(.title3)
+      //Replace the hard-coded size argument with constant from enum
+      .frame(width: Constants.Leaderboard.dateColumnWidth)
+  }
+}
+
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
     // Embed both instruction and big number preview
@@ -103,6 +133,9 @@ struct TextViews_Previews: PreviewProvider {
       LabelText(text: "Score")
       BodyText(text: "You scored 200 Points\n 🎉🎉🎉")
       ButtonText(text: "Start New Round")
+      // Showing up the score and date in the preview
+      ScoreText(score: 459)
+      DateText(date: Date())
     }
     .padding()
   }
