@@ -9,10 +9,60 @@ import SwiftUI
 
 struct LeaderboardView: View {
   var body: some View {
-    // Showing the Row View
-    RowView(index: 1, score: 10, date: Date())
+    // embed in VStack and spacing
+    ZStack {
+      Color("BackgroundColor")
+        .ignoresSafeArea()
+      VStack(spacing: 10) {
+        // Shoving HeaderView
+        HeaderView()
+        LabelView()
+        // Showing the Row View
+        RowView(index: 1, score : 10, date: Date())
+      }
+    }
   }
 }
+
+// Create the  Header View
+struct HeaderView: View {
+  var body: some View {
+    ZStack {
+      BigBoldText(text: "Leaderboard")
+      // add X button in the header view to close the leaderboard
+      HStack {
+        Spacer()
+        // Create a butto
+        Button {
+          //
+        } label: {
+          // show the rounded image filled from rounded view we have and change the image to x
+          RoundedImageViewFilled(systemName: "xmark")
+        }
+      }
+    }
+  }
+}
+
+// Create the  Label View
+struct LabelView: View {
+  var body: some View {
+    HStack {
+      Spacer()
+        .frame(width: Constants.General.roundedViewLength)
+      Spacer()
+      LabelText(text: "Score")
+        .frame(width: Constants.Leaderboard.scoreColumnWidth)
+      Spacer()
+      LabelText(text: "Date")
+        .frame(width: Constants.Leaderboard.dateColumnWidth)
+    }
+    .padding(.horizontal)
+    .frame(maxWidth: Constants.Leaderboard.maxRowWidth)
+  }
+}
+
+
 
 // create a row view
 struct RowView: View {
