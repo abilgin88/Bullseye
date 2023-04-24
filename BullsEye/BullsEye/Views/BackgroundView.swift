@@ -27,6 +27,9 @@ struct BackgroundView: View {
 // create a top-view
 struct TopView: View {
   @Binding var game: Game
+  // Add state variable for leaderboardIsShowing and set false to TopView
+  @State private var leaderboardIsShowing = false
+  
   var body: some View {
     HStack {
       // Add action to start over the button and call the restart method when tapping it
@@ -36,7 +39,19 @@ struct TopView: View {
         RoundedImageViewStroked(systemName: "arrow.counterclockwise")
       }
       Spacer()
-      RoundedImageViewFilled(systemName: "list.dash")
+      //Make the roundedImageViewFilled into a button from the background view
+      Button {
+        // when button tap set the leaderboardIsShowing to true
+        leaderboardIsShowing = true
+        
+      } label: {
+        RoundedImageViewFilled(systemName: "list.dash")
+      }
+      // call the sheet method(binding the value here) and add leaderboardview to show
+      .sheet(isPresented: $leaderboardIsShowing) {
+        LeaderboardView(leaderboardIsShowing: $leaderboardIsShowing)
+      }
+      
     }
   }
 }
