@@ -11,6 +11,8 @@ struct Game {
   var target = Int.random(in: 1...100)
   var score = 0
   var round = 1
+  //  Define an array for leaderboard entries
+  var leaderboardEntries: [LeaderboardEntry] = []
   
   //  Create a method for calculating points
   func point(sliderValue: Int) -> Int {
@@ -29,6 +31,7 @@ struct Game {
   
   // create a method to start new round
   mutating func startNewRound(points: Int) {
+    addToLeaderboard(score: points)
     // after start the score and round will update
     score += points
     round += 1
@@ -42,4 +45,20 @@ struct Game {
     round = 1
     target = Int.random(in: 1...100)
   }
+  
+  //  Create a mutating method for adding score and date for the Leaderboardenries
+  mutating func addToLeaderboard(score: Int) {
+    // Add items and sort them
+    leaderboardEntries.append(LeaderboardEntry(score: score, date: Date()))
+    leaderboardEntries.sort { entry1, entry2 in
+      entry1.score > entry2.score
+    }
+  }
 }
+
+// Create a struct for the data model
+struct LeaderboardEntry {
+  let score: Int
+  let date: Date
+}
+
