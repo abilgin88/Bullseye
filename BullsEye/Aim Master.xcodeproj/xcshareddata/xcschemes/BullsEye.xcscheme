@@ -17,7 +17,7 @@
                BlueprintIdentifier = "85190F3129E1084E0051C8A5"
                BuildableName = "BullsEye.app"
                BlueprintName = "BullsEye"
-               ReferencedContainer = "container:BullsEye.xcodeproj">
+               ReferencedContainer = "container:Aim Master.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "85B0A5C229E181B2009EED2D"
                BuildableName = "BullsEyeTests.xctest"
                BlueprintName = "BullsEyeTests"
-               ReferencedContainer = "container:BullsEye.xcodeproj">
+               ReferencedContainer = "container:Aim Master.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -59,7 +59,7 @@
             BlueprintIdentifier = "85190F3129E1084E0051C8A5"
             BuildableName = "BullsEye.app"
             BlueprintName = "BullsEye"
-            ReferencedContainer = "container:BullsEye.xcodeproj">
+            ReferencedContainer = "container:Aim Master.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -76,7 +76,7 @@
             BlueprintIdentifier = "85190F3129E1084E0051C8A5"
             BuildableName = "BullsEye.app"
             BlueprintName = "BullsEye"
-            ReferencedContainer = "container:BullsEye.xcodeproj">
+            ReferencedContainer = "container:Aim Master.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
