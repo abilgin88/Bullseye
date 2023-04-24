@@ -49,7 +49,7 @@ struct TopView: View {
       }
       // call the sheet method(binding the value here) and add leaderboardview to show
       .sheet(isPresented: $leaderboardIsShowing) {
-        LeaderboardView(leaderboardIsShowing: $leaderboardIsShowing)
+        LeaderboardView(leaderboardIsShowing: $leaderboardIsShowing, game: $game) // pass the game binding value to the background sheet method.
       }
       
     }

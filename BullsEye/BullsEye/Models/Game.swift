@@ -14,6 +14,18 @@ struct Game {
   //  Define an array for leaderboard entries
   var leaderboardEntries: [LeaderboardEntry] = []
   
+  // 6
+  init(loadTestData: Bool = false) {
+    if loadTestData {
+      addToLeaderboard(score: 100)
+      addToLeaderboard(score: 80)
+      addToLeaderboard(score: 200)
+      addToLeaderboard(score: 50)
+      addToLeaderboard(score: 20)
+    }
+  }
+
+  
   //  Create a method for calculating points
   func point(sliderValue: Int) -> Int {
     let difference = abs(target - sliderValue)

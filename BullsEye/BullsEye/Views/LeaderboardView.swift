@@ -10,6 +10,8 @@ import SwiftUI
 struct LeaderboardView: View {
   // binding the leaderboardIsShowing
   @Binding var leaderboardIsShowing: Bool
+  // Binding game to the leaderboard
+  @Binding var game: Game
   
   var body: some View {
     // embed in VStack and spacing
@@ -20,8 +22,19 @@ struct LeaderboardView: View {
         // pass leaderboardIsShowing to header view
         HeaderView(leaderboardIsShowing: $leaderboardIsShowing)
         LabelView()
-        // Showing the Row Views
-        RowView(index: 1, score : 10, date: Date())
+        // Embed the rowView in the scrollview
+        ScrollView {
+          // Embed RowView in the VStack and add space
+          VStack(spacing: 10) {
+            // Create forEach for iterate the data LeaderboardEntries
+            ForEach(game.leaderboardEntries.indices,
+                    id: \.self) { index in
+              let leaderboardEntry = game.leaderboardEntries[index]
+              // Showing the Row Views
+              RowView(index: index + 1, score : leaderboardEntry.score, date: leaderboardEntry.date)
+            }
+          }
+        }
       }
     }
   }
@@ -58,7 +71,7 @@ struct HeaderView: View {
         }
       }
     }
-    .padding()
+    .padding([.horizontal, .top]) // Add padding to HeaderView
   }
 }
 
@@ -79,8 +92,6 @@ struct LabelView: View {
     .frame(maxWidth: Constants.Leaderboard.maxRowWidth)
   }
 }
-
-
 
 // create a row view
 struct RowView: View {
@@ -117,11 +128,13 @@ struct RowView: View {
 struct LeaderboardView_Previews: PreviewProvider {
   // pass leaderboardIsShowing to preview and create a static constant variable
   static private var leaderboardIsShowing = Binding.constant(false)
+  // create a constant and pass the game binding value to the previews
+  static private var game = Binding.constant(Game(loadTestData: true)) // set the constant to true to show instant data
   
   static var previews: some View {
-    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing)
+    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing, game: game)
       .previewInterfaceOrientation(.landscapeRight)
-    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing)      .preferredColorScheme(.dark)
+    LeaderboardView(leaderboardIsShowing: leaderboardIsShowing, game: game)      .preferredColorScheme(.dark)
   }
 }
 
