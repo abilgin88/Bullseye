@@ -26,9 +26,20 @@ struct LeaderboardView: View {
 
 // Create the  Header View
 struct HeaderView: View {
+  //access the environment in the header view and create the vertical and horizontal variables
+  @Environment(\.verticalSizeClass) var verticalSizeClass
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
+  
   var body: some View {
     ZStack {
-      BigBoldText(text: "Leaderboard")
+      // embed bigBoldText view in HStack
+      HStack {
+        BigBoldText(text: "Leaderboard")
+        // apply conditional for portrait to check portrait environment size
+        if verticalSizeClass == .regular && horizontalSizeClass == .compact {
+          Spacer()
+        }
+      }
       // add X button in the header view to close the leaderboard
       HStack {
         Spacer()
@@ -41,6 +52,7 @@ struct HeaderView: View {
         }
       }
     }
+    .padding()
   }
 }
 
